@@ -1,6 +1,6 @@
 {
 	"name": "n8n-nodes-linnx",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "n8n nodes for the Linnx REST API: read your LinkedIn inbox, connections, posts and analytics, and save draft replies. Never sends anything.",
 	"license": "MIT",
 	"homepage": "https://github.com/PK-Consulting/n8n-nodes-linnx#readme",
