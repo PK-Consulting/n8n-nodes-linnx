@@ -1,0 +1,60 @@
+{
+	"name": "n8n-nodes-linnx",
+	"version": "0.1.0",
+	"description": "n8n nodes for the Linnx REST API: read your LinkedIn inbox, connections, posts and analytics, and save draft replies. Never sends anything.",
+	"license": "MIT",
+	"homepage": "https://github.com/PK-Consulting/n8n-nodes-linnx#readme",
+	"keywords": [
+		"n8n-community-node-package",
+		"linnx",
+		"linkedin"
+	],
+	"author": {
+		"name": "Linnx",
+		"email": "157590885+PK-Consulting@users.noreply.github.com",
+		"url": "https://linnx.ai"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/PK-Consulting/n8n-nodes-linnx.git"
+	},
+	"engines": {
+		"node": ">=22.22"
+	},
+	"scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"test": "npm run build && node --test test/linnx.node.test.js test/linnx-trigger.test.js",
+		"test:spec": "node --test test/spec-contract.test.js",
+		"test:live": "node --test test/live.test.js",
+		"release": "n8n-node release",
+		"prepublishOnly": "n8n-node prerelease"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [
+			"dist/credentials/LinnxApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/Linnx/Linnx.node.js",
+			"dist/nodes/LinnxTrigger/LinnxTrigger.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "*",
+		"eslint": "9.39.4",
+		"prettier": "3.8.3",
+		"release-it": "20.2.0",
+		"typescript": "5.9.3"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}

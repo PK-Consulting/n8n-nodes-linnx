@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  schedule:
+    # Daily, so an API change is caught even when nobody touches this repo.
+    - cron: '0 6 * * *'
+
+# Cancel in-progress runs for the same branch/PR to avoid wasting CI minutes.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      LINNX_API_KEY: ${{ secrets.LINNX_DEMO_API_KEY }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Run build
+        run: npm run build
+
+      - name: Unit tests and live spec contract
+        run: node --test test/linnx.node.test.js test/linnx-trigger.test.js test/spec-contract.test.js
+
+      - name: Live API tests (demo account)
+        if: ${{ env.LINNX_API_KEY != '' }}
+        run: npm run test:live

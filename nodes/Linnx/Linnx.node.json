@@ -1,0 +1,10 @@
+{
+	"node": "n8n-nodes-linnx",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Communication", "Sales"],
+	"resources": {
+		"credentialDocumentation": [{ "url": "https://github.com/PK-Consulting/n8n-nodes-linnx#credentials" }],
+		"primaryDocumentation": [{ "url": "https://github.com/PK-Consulting/n8n-nodes-linnx#readme" }]
+	}
+}
