@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-linnx",
+	"node": "n8n-nodes-linnx.linnx",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Communication", "Sales"],
